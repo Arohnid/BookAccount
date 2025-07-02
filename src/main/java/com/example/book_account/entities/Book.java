@@ -1,15 +1,15 @@
 package com.example.book_account.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
+
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
 
 
 @Entity
 @Table(name = "book")
 @Data
 public class Book {
+
 
     @Id
     @Column(name = "id")
@@ -23,7 +23,7 @@ public class Book {
     @JoinColumn(name = "author_id", nullable = false)
     private Author author;
 
-    @Column(name = "`year`", nullable = false)
+    @Column(name = "publ_year", nullable = false)
     private int year;
 
     @Column(name = "genre", nullable = false)

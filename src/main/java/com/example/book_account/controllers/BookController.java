@@ -1,4 +1,5 @@
 package com.example.book_account.controllers;
+
 import com.example.book_account.dto.BookDto;
 import com.example.book_account.services.BookService;
 
@@ -23,7 +24,7 @@ public class BookController {
     }
 
     @GetMapping("/{id}")
-    public BookDto findById(@PathVariable Long id) {
+    public BookDto getById(@PathVariable Long id) {
         return bookService.getById(id);
     }
 
@@ -38,7 +39,7 @@ public class BookController {
         bookService.update(id, bookDto);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
         bookService.delete(id);
     }
