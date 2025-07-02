@@ -1,7 +1,6 @@
 package com.example.book_account.services;
 
 import com.example.book_account.dto.BookDto;
-import com.example.book_account.entities.Author;
 import com.example.book_account.entities.Book;
 import com.example.book_account.repositories.AuthorRepository;
 import com.example.book_account.repositories.BookRepository;
@@ -10,9 +9,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.ArrayList;
+
 import java.util.Collection;
-import java.util.List;
+
 
 @Service
 @RequiredArgsConstructor
@@ -21,16 +20,6 @@ public class BookService {
     private final BookRepository bookRepository;
     private final AuthorRepository authorRepository;
 
-
-    public Collection<BookDto> getAll() {
-        return bookRepository.findAll().stream()
-                .map(BookService::mapToDto)
-                .toList();
-    }
-
-    public BookDto getById(Long id) {
-        return mapToDto(bookRepository.findById(id).orElseThrow());
-    }
 
     public void create(BookDto item) {
         Book book = mapToEntity(item);
@@ -43,6 +32,40 @@ public class BookService {
         }
     }
 
+    public Collection<BookDto> getAll() {
+        return bookRepository.findAll().stream()
+                .map(BookService::mapToDto)
+                .toList();
+    }
+
+    public BookDto getById(Long id) {
+        if (!bookRepository.existsById(id)) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+        return mapToDto(bookRepository.findById(id).orElseThrow());
+    }
+
+
+    public void update(Long id, BookDto item) {
+        Book book = mapToEntity(item);
+        book.setBookId(id);
+        Long authorId = item.getAuthorId();
+        if (!bookRepository.existsById(id) || !authorRepository.existsById(authorId)) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        } else {
+            book.setAuthor(authorRepository.findById(authorId).orElseThrow());
+            bookRepository.save(book);
+        }
+    }
+
+    public void delete(Long id) {
+        if (!bookRepository.existsById(id)) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        } else {
+            bookRepository.deleteById(id);
+            throw new ResponseStatusException(HttpStatus.NO_CONTENT);
+        }
+    }
 
     public static BookDto mapToDto(Book book) {
         BookDto bookDto = new BookDto();

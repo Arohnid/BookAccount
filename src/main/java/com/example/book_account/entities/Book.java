@@ -1,23 +1,32 @@
 package com.example.book_account.entities;
 
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.annotation.Id;
 
+
+@Entity
+@Table(name = "book")
 @Data
-@AllArgsConstructor
 public class Book {
 
     @Id
-    private long id;
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long bookId;
 
+    @Column(name = "title", nullable = false)
     private String title;
 
-    private long author_id;
+    @ManyToOne
+    @JoinColumn(name = "author_id", nullable = false)
+    private Author author;
 
+    @Column(name = "`year`", nullable = false)
     private int year;
 
+    @Column(name = "genre", nullable = false)
     private String genre;
 
 }

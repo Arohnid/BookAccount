@@ -29,8 +29,18 @@ public class BookController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void createBook(@RequestBody BookDto bookDto) {
+    public void create(@RequestBody BookDto bookDto) {
         bookService.create(bookDto);
+    }
+
+    @PutMapping("/{id}")
+    public void update(@PathVariable Long id, @RequestBody BookDto bookDto) {
+        bookService.update(id, bookDto);
+    }
+
+    @DeleteMapping
+    public void delete(@PathVariable Long id) {
+        bookService.delete(id);
     }
 
 }
