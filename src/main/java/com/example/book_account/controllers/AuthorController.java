@@ -1,10 +1,8 @@
 package com.example.book_account.controllers;
-
 import com.example.book_account.dto.AuthorDto;
 import com.example.book_account.services.AuthorService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.Collection;
 
 @RestController

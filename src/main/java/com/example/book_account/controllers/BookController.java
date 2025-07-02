@@ -1,13 +1,9 @@
 package com.example.book_account.controllers;
-
 import com.example.book_account.dto.BookDto;
 import com.example.book_account.services.BookService;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.Collection;
-
 
 @RestController
 @RequestMapping("/books")

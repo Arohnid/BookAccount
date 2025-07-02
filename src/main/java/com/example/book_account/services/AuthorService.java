@@ -4,15 +4,12 @@ import com.example.book_account.dto.AuthorDto;
 import com.example.book_account.entities.Author;
 import com.example.book_account.repositories.AuthorRepository;
 import lombok.RequiredArgsConstructor;
-
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-
 import java.util.Collection;
-
 
 @Service
 @RequiredArgsConstructor

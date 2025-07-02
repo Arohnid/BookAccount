@@ -3,7 +3,6 @@ package com.example.book_account.entities;
 import jakarta.persistence.*;
 import lombok.Data;
 
-
 @Entity
 @Table(name = "author")
 @Data
