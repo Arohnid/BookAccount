@@ -1,26 +1,36 @@
 package com.example.book_account.controllers;
+import com.example.book_account.dto.BookDto;
+import com.example.book_account.services.BookService;
 
-import com.example.book_account.entities.Book;
-import com.example.book_account.repositories.BookRepository;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Collection;
+
 
 @RestController
 @RequestMapping("/books")
 public class BookController {
-    private final BookRepository repository;
+    private final BookService bookService;
 
-    public BookController(BookRepository repository) {
-        this.repository = repository;
+    public BookController(BookService bookService) {
+        this.bookService = bookService;
     }
 
     @GetMapping
-    public Iterable<Book> findAll() {
-        return repository.findAll();
+    public Collection<BookDto> getAll() {
+        return bookService.getAll();
     }
 
-    public void addBook() {
-
+    @GetMapping("/{id}")
+    public BookDto findById(@PathVariable Long id) {
+        return bookService.getById(id);
     }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public void createBook(@RequestBody BookDto bookDto) {
+        bookService.create(bookDto);
+    }
+
 }
