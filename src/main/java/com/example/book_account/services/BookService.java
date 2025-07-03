@@ -82,4 +82,9 @@ public class BookService {
         book.setYear(bookDto.getYear());
         return book;
     }
+
+    // Method for Controller tests
+    public void deleteAll() {
+        bookRepository.deleteAll();
+    }
 }

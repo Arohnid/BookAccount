@@ -57,4 +57,9 @@ public class AuthorService {
         }
         return author;
     }
+
+    // Method for Controller tests
+    public void deleteAll() {
+        authorRepository.deleteAll();
+    }
 }
