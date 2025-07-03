@@ -1,6 +1,7 @@
 package com.example.book_account.controllers;
 import com.example.book_account.dto.AuthorDto;
 import com.example.book_account.services.AuthorService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import java.util.Collection;
@@ -29,7 +30,7 @@ public class AuthorController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void create(@RequestBody AuthorDto authorDto) {
+    public void create(@Valid @RequestBody AuthorDto authorDto) {
         authorService.create(authorDto);
     }
 

@@ -1,6 +1,9 @@
 package com.example.book_account.controllers;
+
 import com.example.book_account.dto.BookDto;
 import com.example.book_account.services.BookService;
+import jakarta.validation.Valid;
+import jakarta.validation.ValidationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import java.util.Collection;
@@ -9,6 +12,7 @@ import java.util.Collection;
 @RequestMapping("/books")
 public class BookController {
     private final BookService bookService;
+    ValidationException validationException = new ValidationException();
 
     public BookController(BookService bookService) {
         this.bookService = bookService;
@@ -26,12 +30,12 @@ public class BookController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void create(@RequestBody BookDto bookDto) {
+    public void create(@Valid @RequestBody BookDto bookDto) {
         bookService.create(bookDto);
     }
 
     @PutMapping("/{id}")
-    public void update(@PathVariable Long id, @RequestBody BookDto bookDto) {
+    public void update(@PathVariable Long id, @Valid @RequestBody BookDto bookDto) {
         bookService.update(id, bookDto);
     }
 
