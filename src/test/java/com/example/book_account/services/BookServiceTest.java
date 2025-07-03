@@ -42,7 +42,7 @@ class BookServiceTest {
     private Book book3;
 
     @BeforeEach
-    void bookSetUp() {
+    void init() {
         author = new Author();
         author.setName("Test Author");
         author.setBirthYear(1989);

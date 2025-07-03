@@ -38,7 +38,7 @@ class AuthorServiceTest {
     private Author author3;
 
     @BeforeEach
-    void authorSetUp() {
+    void init() {
         author1 = new Author();
         author1.setName("Test Author 1");
         author1.setBirthYear(1991);
