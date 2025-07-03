@@ -60,7 +60,7 @@ public class BookService {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         } else {
             bookRepository.deleteById(id);
-            throw new ResponseStatusException(HttpStatus.NO_CONTENT);
+            //throw new ResponseStatusException(HttpStatus.NO_CONTENT);
         }
     }
 

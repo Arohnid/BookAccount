@@ -11,3 +11,5 @@ spring:
   sql:
     init.mode: never
 
+#    init:
+#      data-locations: classpath:data-test.sql
