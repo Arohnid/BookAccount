@@ -112,7 +112,7 @@ class AuthorServiceTest {
 
         Query query = entityManager
                 .getEntityManager()
-                .createNativeQuery("SELECT * FROM author ORDER BY ID DESC LIMIT 1", Author.class);
+                .createNativeQuery("SELECT * FROM authors ORDER BY ID DESC LIMIT 1", Author.class);
         Author createdAuthor = (Author) query.getSingleResult();
 
         assertThat(createdAuthor).isNotNull();
@@ -129,7 +129,7 @@ class AuthorServiceTest {
 
         Query query = entityManager
                 .getEntityManager()
-                .createNativeQuery("SELECT * FROM author ORDER BY ID DESC LIMIT 1", Author.class);
+                .createNativeQuery("SELECT * FROM authors ORDER BY ID DESC LIMIT 1", Author.class);
         Author createdAuthor = (Author) query.getSingleResult();
 
         assertThat(createdAuthor.getBirthYear()).isNull();

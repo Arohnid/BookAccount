@@ -129,7 +129,7 @@ class BookServiceTest {
 
         Query query = entityManager
                 .getEntityManager()
-                .createNativeQuery("SELECT * FROM book ORDER BY ID DESC LIMIT 1", Book.class);
+                .createNativeQuery("SELECT * FROM books ORDER BY ID DESC LIMIT 1", Book.class);
         Book createdBook = (Book) query.getSingleResult();
 
         assertThat(createdBook).isNotNull();
@@ -154,7 +154,7 @@ class BookServiceTest {
 
         Query query = entityManager
                 .getEntityManager()
-                .createNativeQuery("SELECT * FROM book ORDER BY ID DESC LIMIT 1", Book.class);
+                .createNativeQuery("SELECT * FROM books ORDER BY ID DESC LIMIT 1", Book.class);
         Book updatedBook = (Book) query.getSingleResult();
 
         assertThat(updatedBook).isNotNull();
@@ -190,7 +190,7 @@ class BookServiceTest {
 
         Query query = entityManager
                 .getEntityManager()
-                .createNativeQuery("SELECT * FROM book", Book.class);
+                .createNativeQuery("SELECT * FROM books", Book.class);
         List<Book> books = query.getResultList();
 
         assertThat(books.size()).isEqualTo(2);
