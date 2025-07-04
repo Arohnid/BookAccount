@@ -71,7 +71,7 @@ class AuthorServiceTest {
 
     @Test
     @DisplayName("Test if getById method throws exception")
-    public void getByIdException() {
+    public void getByIdExceptionTest() {
         Long id = 500L;
 
         assertThatThrownBy(() -> authorService.getById(id))

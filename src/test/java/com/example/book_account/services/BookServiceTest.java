@@ -142,7 +142,7 @@ class BookServiceTest {
 
     @Test
     @DisplayName("Test update method")
-    public void update() {
+    public void updateTest() {
         BookDto bookDto = new BookDto();
         bookDto.setTitle("Test Book 4");
         bookDto.setAuthorId(author.getAuthorId());
@@ -168,7 +168,7 @@ class BookServiceTest {
 
     @Test
     @DisplayName("Test update method with non-existent id")
-    public void updateIdException() {
+    public void updateIdExceptionTest() {
         BookDto bookDto = new BookDto();
         bookDto.setTitle("Test Book 4");
         bookDto.setAuthorId(author.getAuthorId());
@@ -183,7 +183,7 @@ class BookServiceTest {
 
     @Test
     @DisplayName("Test delete method")
-    public void delete() {
+    public void deleteTest() {
         Long deleteId = book3.getBookId();
 
         bookService.delete(deleteId);
@@ -200,7 +200,7 @@ class BookServiceTest {
 
     @Test
     @DisplayName("Test delete method with non-existent id")
-    public void deleteIdException() {
+    public void deleteIdExceptionTest() {
         Long deleteId = 500L;
 
         assertThatThrownBy(() -> bookService.delete(deleteId))

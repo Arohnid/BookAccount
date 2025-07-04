@@ -15,7 +15,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
-
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -66,7 +65,7 @@ class AuthorControllerTest {
 
     @Test
     @DisplayName("Test getById method with non-existent id")
-    public void getByNullIdTest() throws Exception {
+    public void getByIdExceptionTest() throws Exception {
         mockMvc.perform(get("/authors/{id}", 500L))
                 .andExpect(status().isNotFound());
     }
